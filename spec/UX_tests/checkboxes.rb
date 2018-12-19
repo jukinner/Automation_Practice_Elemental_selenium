@@ -10,15 +10,18 @@ describe 'dropdown navigation' do
     @driver.close_browser
   end
 
-  it 'can gather all the elements and check that the last element is checked' do
+  it 'can gather all the elements and check that the last element is checked using attribute lookup' do
     checkbox_page = @driver
-    checkboxes = checkbox_page.discern_last_status
+    checkboxes = checkbox_page.discern_last_status_with_attribute
 
-    # using attribute
     expect(checkboxes).not_to be_nil
+  end
 
-    # using selected?
-    # expect(checkboxes).to eq("true")
+  it 'can gather all the elements and check that the last element is checked using .selected? lookup' do
+    checkbox_page = @driver
+    checkboxes = checkbox_page.discern_last_status_with_selected
+
+    expect(checkboxes).to eq("true")
   end
 
   it 'can uncheck all the boxes and check the first box' do 
