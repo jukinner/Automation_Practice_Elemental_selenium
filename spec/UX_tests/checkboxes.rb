@@ -24,10 +24,16 @@ describe 'dropdown navigation' do
     expect(checkboxes).to eq("true")
   end
 
-  it 'can uncheck all the boxes and check the first box' do 
+  it 'can uncheck all the boxes' do 
     checkbox_page = @driver
     checkboxes = checkbox_page.uncheck_all_boxes
     expect(checkbox_page.confirm_checkboxes_unchecked).to eq("unchecked")
+  end
+
+  it 'can uncheck and check the first box' do 
+    checkbox_page = @driver
+    checkboxes = checkbox_page.uncheck_all_boxes
+    expect(checkbox_page.check_first_checkbox).to eq("true")
   end
 
 end

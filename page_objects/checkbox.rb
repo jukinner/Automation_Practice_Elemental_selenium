@@ -29,4 +29,10 @@ class Checkbox < Baseclass
     checkboxes.each { |x| return "checked" if x.selected?.inspect == true }
     return "unchecked"
   end
+
+  def check_first_checkbox
+    checkboxes = @driver.find_elements(css: 'input[type="checkbox"]')
+    checkboxes.first.click
+    return checkboxes.last.selected?.inspect
+  end
 end
